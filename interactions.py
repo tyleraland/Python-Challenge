@@ -1,4 +1,5 @@
 import string
+import re
 
 # Challenge 0
 sol1 = 2**38
@@ -12,3 +13,10 @@ sol1 = 'ocr'
 
 #challenge 2
 clue2 = open('clue2').read()
+string.translate(clue2, string.maketrans('',''), '!@#$%^&*()[]{}_+').replace('\n','') #equality
+
+#challenge 3
+clue3 = open('clue3').read()
+ch3 = re.compile('(?<![A-Z])[A-Z][A-Z][A-Z][a-z][A-Z][A-Z][A-Z](?![A-Z])')
+sol3 = "".join([letter[3] for letter in re.findall(ch3, clue3)])
+print(sol3) # First attempt: try the first letter 'l'
